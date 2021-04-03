@@ -1,15 +1,53 @@
 //FINAL_PROJECT_MAIN
+#include<iostream>
+#include"Data_Management.cpp"
+#include"Review.cpp"
+#include"Merge_Sort.cpp"
+#include"Quick_Sort.cpp"
 
-int[] createMyData(){
-    int arr[];
-    switch(){
-        
-    }
-    return arr;
+//user_id (integer), item_id(integer), rating(integer), time_stamp(integer), title(string).
+Review* createMyData(bool user_id, bool item_id, bool rating, bool time_stamp, bool title){
+    Review* reviews = new Review[100000];
+    Data_Management d;
+    reviews = d.deserialize_data();
+    return reviews;
 }
 
+Review* sortMyData(Review* reviews,bool quicksort, bool max){
+    
+    if(!quicksort){
+        Merge_Sort::sort(reviews, max);
+    }else{
+        Quick_Sort::sort(reviews, max);
+    }
+}
+
+ void printMydata(int* reviews){
+     std::cout<<*reviews<<std::endl;
+ }
+
+//user_id (integer), item_id(integer), rating(integer), time_stamp(integer), title(string).
 int main(){
-    int mydata[] = createMyData();
-    merge_sort(mydata);
-    quick_sort(my data);
+    //TODO: To be done with UI
+    bool user_id = true;
+    bool item_id = true;
+    bool rating = true;
+    bool time_stamp = true;
+    bool title = true;
+
+    Review* reviews = createMyData(user_id,item_id,rating,time_stamp,title);
+
+    //TODO: define variables for UI
+    //quick sort min
+    reviews = sortMyData(reviews, true, false);
+
+    //quick sort max
+    reviews = sortMyData(reviews, true, true);
+
+    //merge sort min
+    reviews = sortMyData(reviews, false, false);
+
+    //merge sort max
+    reviews = sortMyData(reviews, false, true);
+    
 }
