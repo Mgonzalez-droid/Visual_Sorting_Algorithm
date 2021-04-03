@@ -17,7 +17,7 @@ class Data_Management{
 	}
 	//user_id (integer), item_id(integer), rating(integer), time_stamp(integer), title(string).
 	//return array of data
-	Review* deserialize_data(){
+	t* deserialize_data(){
 		std::ifstream file;
 		try{
 		file.open(file_name);

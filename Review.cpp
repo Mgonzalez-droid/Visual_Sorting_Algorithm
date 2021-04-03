@@ -24,6 +24,6 @@ public:
 
 	}
 	std::string get_movieTitle(){
-		return this -> movie_id;
+		return this -> movie_title;
 	}
 };

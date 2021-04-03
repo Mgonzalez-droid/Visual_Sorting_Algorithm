@@ -4,12 +4,16 @@
 #include"Review.cpp"
 #include"Merge_Sort.cpp"
 #include"Quick_Sort.cpp"
+#include<map>
+//create a map of key string, val vector<int or string>
+
 
 //user_id (integer), item_id(integer), rating(integer), time_stamp(integer), title(string).
 Review* createMyData(bool user_id, bool item_id, bool rating, bool time_stamp, bool title){
-    Review* reviews = new Review[100000];
+    t* reviews = new Review[100000];
     Data_Management d;
     reviews = d.deserialize_data();
+    splitData(reviews);
     return reviews;
 }
 
@@ -22,7 +26,8 @@ Review* sortMyData(Review* reviews,bool quicksort, bool max){
     }
 }
 
- void printMydata(int* reviews){
+template<class t>
+ void printMydata(t* reviews){
      std::cout<<*reviews<<std::endl;
  }
 
@@ -35,7 +40,7 @@ int main(){
     bool time_stamp = true;
     bool title = true;
 
-    Review* reviews = createMyData(user_id,item_id,rating,time_stamp,title);
+    t* reviews = createMyData(user_id,item_id,rating,time_stamp,title);
 
     //TODO: define variables for UI
     //quick sort min
