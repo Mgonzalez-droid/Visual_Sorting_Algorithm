@@ -8,6 +8,30 @@ private:
 	std::string movie_title ="";
 
 public:
+	Review(){
+
+	}
+
+	void set_userId(int& user_id){
+		this -> user_id = user_id;
+	}
+
+	void set_rating(int& rating){
+		this -> rating = rating;
+	}
+
+	void set_time_stamp(int& time_stamp){
+		this -> time_stamp = time_stamp;
+	}
+
+	void set_movieId(int& movie_id){
+		this -> movie_id = movie_id;
+	}
+
+	void set_movieTitle(std::string& movie_title){
+		this -> movie_title = movie_title;
+	}
+
 	int get_userId(){ //pass by pointer for speed boost!
 		return this-> user_id;
 	}

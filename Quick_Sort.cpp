@@ -2,4 +2,4 @@
 
 class Quick_Sort{
     
-}
+};
