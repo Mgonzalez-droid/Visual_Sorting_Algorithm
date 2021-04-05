@@ -30,6 +30,8 @@ void sort_data(int choice, int sort_method, int sort_property){
         case USER_ID :{
             std::vector<int> my_data = data.getUserIdVec();
             if(sort_method == MERGE_SORT){
+                int start = 0;
+                int end = my_data.size() - 1;
                 if(sort_property == MAX){
                     //merge sort max
                 }else if(sort_property == MIN){
@@ -48,6 +50,8 @@ void sort_data(int choice, int sort_method, int sort_property){
         case ITEM_ID :{
             std::vector<int> my_data = data.getItemIdVec();
             if(sort_method == MERGE_SORT){
+                int start = 0;
+                int end = my_data.size() - 1;
                 if(sort_property == MAX){
                     //merge sort max
                 }else if(sort_property == MIN){
@@ -66,6 +70,8 @@ void sort_data(int choice, int sort_method, int sort_property){
         case RATING :{
             std::vector<int> my_data = data.getRatingVec();
             if(sort_method == MERGE_SORT){
+                int start = 0;
+                int end = my_data.size() - 1;
                 if(sort_property == MAX){
                     //merge sort max
                 }else if(sort_property == MIN){
@@ -84,6 +90,8 @@ void sort_data(int choice, int sort_method, int sort_property){
         case TIME_STAMP :{
             std::vector<int> my_data = data.getTimeStampVec();
             if(sort_method == MERGE_SORT){
+                int start = 0;
+                int end = my_data.size() - 1;
                 if(sort_property == MAX){
                     //merge sort max
                 }else if(sort_property == MIN){
@@ -102,6 +110,8 @@ void sort_data(int choice, int sort_method, int sort_property){
         case MOVIE_TITLE :{
             std::vector<std::string> my_data = data.getMovieTitleVec();
             if(sort_method == MERGE_SORT){
+                int start = 0;
+                int end = my_data.size() - 1;
                 if(sort_property == MAX){
                     //merge sort max
                 }else if(sort_property == MIN){
