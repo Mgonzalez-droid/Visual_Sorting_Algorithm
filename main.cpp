@@ -2,8 +2,10 @@
 #include<iostream>
 #include"Data_Management.cpp"
 #include"Review.cpp"
-#include"Merge_Sort.cpp"
-#include"Quick_Sort.cpp"
+#include"Merge_Sort_min.cpp"
+#include"Merge_Sort_max.cpp"
+#include"Quick_Sort_min.cpp"
+#include"Quick_Sort_max.cpp"
 #include<map>
 #include<vector>
 //create a map of key string, val vector<int or string> therefore template needed
