@@ -1,3 +1,6 @@
+#ifndef HEADER_H
+#define HEADER_H
+
 class Review{
 private:
 	//user_id (integer), item_id(integer), rating(integer), time_stamp(integer), title(string).
@@ -45,9 +48,10 @@ public:
 	}
 
 	int get_timeStamp(){
-
+		return this -> time_stamp;
 	}
 	std::string get_movieTitle(){
 		return this -> movie_title;
 	}
 };
+#endif

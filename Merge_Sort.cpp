@@ -26,7 +26,7 @@ class Merge_Sort{
 	 *	5. Copy any remaining items from the second sequence to the output sequence.
 	 */
 
-	t* sort(t* data, int left = this -> start, int right = this -> end){
+	t* sort(t* data, int left = 0, int right = 100000){
 		if (left < right){
 			int middle = left + (right - left)/2;
 			sort(data,left,middle);

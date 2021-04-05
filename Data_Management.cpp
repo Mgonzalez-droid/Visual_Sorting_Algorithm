@@ -19,18 +19,23 @@ private:
     	ss.str(s);
     	std::string item;
 		Review review;
+		int temp = 0;
 
 		std::getline(ss,item,delim);
-		review.set_userId(std::stoi(item));
+		temp = std::stoi(item);
+		review.set_userId(temp);
 
 		std::getline(ss,item,delim);
-		review.set_movieId(std::stoi(item));
+		temp = std::stoi(item);
+		review.set_movieId(temp);
 
 		std::getline(ss,item,delim);
-		review.set_rating(std::stoi(item));
+		temp = std::stoi(item);
+		review.set_rating(temp);
 
 		std::getline(ss,item,delim);
-		review.set_time_stamp(std::stoi(item));
+		temp = std::stoi(item);
+		review.set_time_stamp(temp);
 
 		reviews.push_back(review);
 	}
@@ -87,7 +92,7 @@ private:
 		}
 	}
 public:
-	Data_Management{
+	Data_Management(){
 		deserialize_data();
 	}
 
@@ -95,12 +100,12 @@ public:
 		return reviews[index];
 	}
 
-	std::vector<Review>* get_reviews(){
+	std::vector<Review> get_reviews(){
 		return reviews;
 	}
 
 	//user_id (integer), item_id(integer), rating(integer), time_stamp(integer), movie_title(string).
-	std::vector<int> getUserIdVec{
+	std::vector<int> getUserIdVec(){
 		std::vector<int> userIds;
 		for(int i = 0; i < reviews.size(); i++){
 			userIds.push_back(reviews[i].get_userId());
@@ -108,15 +113,15 @@ public:
 		return userIds;
 	}
 
-	std::vector<int> getItemIdVec{
+	std::vector<int> getItemIdVec(){
 		std::vector<int> itemIds;
 		for(int i = 0; i < reviews.size(); i++){
-			itemIds.push_back(reviews[i].get_itemId());
+			itemIds.push_back(reviews[i].get_movieId());
 		}
 		return itemIds;
 	}
 
-	std::vector<int> getRatingVec{
+	std::vector<int> getRatingVec(){
 		std::vector<int> ratings;
 		for(int i = 0; i < reviews.size(); i++){
 			ratings.push_back(reviews[i].get_rating());
@@ -124,7 +129,7 @@ public:
 		return ratings;
 	}
 
-	std::vector<int> getTimeStampVec{
+	std::vector<int> getTimeStampVec(){
 		std::vector<int> timeStamps;
 		for(int i = 0; i < reviews.size(); i++){
 			timeStamps.push_back(reviews[i].get_timeStamp());
@@ -132,8 +137,8 @@ public:
 		return timeStamps;
 	}
 
-	std::vector<int> getMovieTitleVec{
-		std::vector<int> movieTitles;
+	std::vector<std::string> getMovieTitleVec(){
+		std::vector<std::string> movieTitles;
 		for(int i = 0; i < reviews.size(); i++){
 			movieTitles.push_back(reviews[i].get_movieTitle());
 		}

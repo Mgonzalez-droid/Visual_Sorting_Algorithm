@@ -24,32 +24,96 @@ template<class t>
  }
 
 //user_id (integer), item_id(integer), rating(integer), time_stamp(integer), movie_title(string).
-void sort_data(int& choice, int& sort_method, int sort_property){
+void sort_data(int choice, int sort_method, int sort_property){
     Data_Management data;
     switch(choice){
         case USER_ID :{
             std::vector<int> my_data = data.getUserIdVec();
-            if()
+            if(sort_method == MERGE_SORT){
+                if(sort_property == MAX){
+                    //merge sort max
+                }else if(sort_property == MIN){
+                    //merge sort min
+                }
+            } else if(sort_method == QUICK_SORT){
+                if(sort_property == MAX){
+                    //quick sort max
+                }else if(sort_property == MIN){
+                    //quick sort min
+                }
+            }
         };
         break;
 
         case ITEM_ID :{
             std::vector<int> my_data = data.getItemIdVec();
+            if(sort_method == MERGE_SORT){
+                if(sort_property == MAX){
+                    //merge sort max
+                }else if(sort_property == MIN){
+                    //merge sort min
+                }
+            } else if(sort_method == QUICK_SORT){
+                if(sort_property == MAX){
+                    //quick sort max
+                }else if(sort_property == MIN){
+                    //quick sort min
+                }
+            }
         };
         break;
 
         case RATING :{
             std::vector<int> my_data = data.getRatingVec();
+            if(sort_method == MERGE_SORT){
+                if(sort_property == MAX){
+                    //merge sort max
+                }else if(sort_property == MIN){
+                    //merge sort min
+                }
+            } else if(sort_method == QUICK_SORT){
+                if(sort_property == MAX){
+                    //quick sort max
+                }else if(sort_property == MIN){
+                    //quick sort min
+                }
+            }
         };
         break;
 
         case TIME_STAMP :{
             std::vector<int> my_data = data.getTimeStampVec();
+            if(sort_method == MERGE_SORT){
+                if(sort_property == MAX){
+                    //merge sort max
+                }else if(sort_property == MIN){
+                    //merge sort min
+                }
+            } else if(sort_method == QUICK_SORT){
+                if(sort_property == MAX){
+                    //quick sort max
+                }else if(sort_property == MIN){
+                    //quick sort min
+                }
+            }
         };
         break;
 
         case MOVIE_TITLE :{
-            std::vector<int> my_data = data.getMovieTitleVec();
+            std::vector<std::string> my_data = data.getMovieTitleVec();
+            if(sort_method == MERGE_SORT){
+                if(sort_property == MAX){
+                    //merge sort max
+                }else if(sort_property == MIN){
+                    //merge sort min
+                }
+            } else if(sort_method == QUICK_SORT){
+                if(sort_property == MAX){
+                    //quick sort max
+                }else if(sort_property == MIN){
+                    //quick sort min
+                }
+            }
         };
         break;
     }
@@ -64,11 +128,11 @@ int main(){
     bool time_stamp = true;
     bool title = true;
     */
-   int choice = 0//whatever is taken in by the UI
+   int choice = 0;//whatever is taken in by the UI
    int sort_method = QUICK_SORT;
    int sort_property = MIN;
 
-   sort_data(choice, true);
+   //sort_data(choice, true);
 
     //TODO: define variables for UI
     //quick sort min
