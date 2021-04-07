@@ -1,8 +1,9 @@
 #include<vector>
+#include<iostream>
 //Sort Values in Descending order
 struct Merge_Sort_Descending{
     Merge_Sort_Descending(std::vector<int>& data, int low, int high){
-        sort_i(data, low, high);
+    	sort_i(data, low, high);
     }
 
     Merge_Sort_Descending(std::vector<std::string>& data, int low, int high){
@@ -99,14 +100,12 @@ void merge(std::vector<std::string>& data, int left, int mid, int right)
   k = left;
   while (i < n1 && j < n2) 
   {
-    if (X[i] >= Y[j]) //changed, ORiginal line
+    //if (X[i] >= Y[j]) //changed, ORiginal line
     if(compareString(X[i], Y[j], '>'))
     {
       data[k] = X[i];
       i++;
-    } 
-    else 
-    {
+    }else{
       data[k] = Y[j];
       j++;
     }
