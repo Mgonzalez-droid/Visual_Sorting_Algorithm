@@ -171,7 +171,7 @@ int main(){
     bool time_stamp = true;
     bool title = true;
     */
-   int choice = 0;//whatever is taken in by the UI
+   int choice = 1;//whatever is taken in by the UI
    int sort_method = QUICK_SORT;
    int sort_property = DESCENDING;
 
@@ -179,15 +179,23 @@ int main(){
 
     //TODO: define variables for UI
     //quick sort min
+    std::cout<<"RESULTS FROM QUICK SORT MIN:"<<std::endl;
+    std::cout<<"____________________________"<<std::endl<<std::endl;
     sort_data(choice, QUICK_SORT, DESCENDING);
 
     //quick sort max
+    std::cout<<"RESULTS FROM QUICK SORT MAX:"<<std::endl;
+    std::cout<<"____________________________"<<std::endl<<std::endl;
     sort_data(choice, QUICK_SORT, ASCENDING);
 
     //merge sort min
+    std::cout<<"RESULTS FROM MERGE SORT MIN:"<<std::endl;
+    std::cout<<"____________________________"<<std::endl<<std::endl;
     sort_data(choice, MERGE_SORT, DESCENDING);
 
     //merge sort max
+    std::cout<<"RESULTS FROM MERGE SORT MAX:"<<std::endl;
+    std::cout<<"____________________________"<<std::endl<<std::endl;
     sort_data(choice, MERGE_SORT, ASCENDING);
     
 }

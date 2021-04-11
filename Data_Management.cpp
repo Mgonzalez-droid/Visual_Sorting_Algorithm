@@ -12,54 +12,60 @@
 class Data_Management{
 private:
 
-    std::map<std::string, std::vector<std::string> > data;
+    std::map<std::string, std::vector<int> > data;
     std::map<int, std::string> movies;
 
     void Deserialize(){
         //read review data
-        std::ifstream fileOne("/Users/michel/CLionProjects/file_testing/Data/u.data");
+        std::ifstream fileOne("/Users/michel/CLionProjects/Visual_Sorting_Algorithm/Data/u.data");
         std::string line;
         //bool isOpen = fileOne.is_open();
         while(!fileOne.eof() && line != " "){
             std::getline(fileOne, line, '\t');
             if(line != " " && line != ""){
-                data["userId"].push_back(line);
-                std::cout<<"Successfully added review: " << line;
+                data["userId"].push_back(std::stoi(line));
+                //For Debugging:
+                //std::cout<<"Successfully added review: " << line;
             }
 
             std::getline(fileOne, line, '\t');
             if(line != " " && line != ""){
-                data["movieId"].push_back(line);
-                std::cout<< " " << line;
+                data["itemId"].push_back(std::stoi(line));
+                //For Debugging:
+                //std::cout<< " " << line;
             }
 
             std::getline(fileOne, line, '\t');
             if(line != " " && line != ""){
-                data["rating"].push_back(line);
-                std::cout<< " " << line;
+                data["rating"].push_back(std::stoi(line));
+                //For Debugging:
+                //std::cout<< " " << line;
             }
 
             std::getline(fileOne, line, '\n');
             if(line != " " && line != ""){
-                data["time_stamp"].push_back(line);
-                std::cout<< " " << line <<std::endl;
+                data["time_stamp"].push_back(std::stoi(line));
+                //For Debugging:
+                //std::cout<< " " << line <<std::endl;
             }
         }
 
-        std::ifstream fileTwo("/Users/michel/CLionProjects/file_testing/Data/u.item");
+        std::ifstream fileTwo("/Users/michel/CLionProjects/Visual_Sorting_Algorithm/Data/u.item");
         line = "";
         int itemId;
         while(!fileTwo.eof() && line != " "){
             std::getline(fileTwo,line,'|');
             if(line != " " && line != ""){
                 itemId = std::stoi(line);
-                std::cout<<"Successfully added movie: " << " " << itemId;
+                //For Debugging:
+                //std::cout<<"Successfully added movie: " << " " << itemId;
             }
 
             std::getline(fileTwo,line,'|');
             if(line != " " && line != ""){
                 movies[itemId] = line;
-                std::cout<< " " << line << std::endl;
+                //For Debugging:
+                //std::cout<< " " << line << std::endl;
             }
 
             std::getline(fileTwo,line,'\n');
@@ -70,6 +76,7 @@ public:
 		Deserialize();
 	}
 
+	/*
 	Review get_a_review(int index){
 
 	}
@@ -77,25 +84,34 @@ public:
 	std::vector<Review> get_reviews(){
 
 	}
-
+    */
 	//user_id (integer), item_id(integer), rating(integer), time_stamp(integer), movie_title(string).
 	std::vector<int> getUserIdVec(){
-
+        auto it = data.find("userId");
+	    return it->second;
 	}
 
 	std::vector<int> getItemIdVec(){
-
+        auto it = data.find("itemId");
+        return it->second;
 	}
 
 	std::vector<int> getRatingVec(){
-
+        auto it = data.find("rating");
+        return it->second;
 	}
 
 	std::vector<int> getTimeStampVec(){
-
+        auto it = data.find("time_stamp");
+        return it->second;
 	}
 
+	// need to decide what to do here, maybe change movieTitles to a vector containing just movie titles
 	std::vector<std::string> getMovieTitleVec(){
-
+        std::vector<std::string> result;
+	    for(auto movies : movies){
+            result.push_back(movies.second);
+        }
+	    return result;
 	}
 };
