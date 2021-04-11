@@ -1,6 +1,8 @@
 #ifndef HEADER_H
 #define HEADER_H
 
+#include<iostream>
+
 class Review{
 private:
 	//user_id (integer), item_id(integer), rating(integer), time_stamp(integer), title(string).

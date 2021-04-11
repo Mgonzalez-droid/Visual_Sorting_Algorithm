@@ -10,138 +10,92 @@
 //only need to load u.data and u.item, we dont need to specify, that is all the data we need
 
 class Data_Management{
-private:	
-	std::vector<Review> reviews;
-	std::map<int,std::string> movieKeys;
+private:
 
-	void splitReviews(const std::string &s, char delim) {
-    	std::stringstream ss;
-    	ss.str(s);
-    	std::string item;
-		Review review;
-		int temp = 0;
+    std::map<std::string, std::vector<std::string> > data;
+    std::map<int, std::string> movies;
 
-		std::getline(ss,item,delim);
-		temp = std::stoi(item);
-		review.set_userId(temp);
+    void Deserialize(){
+        //read review data
+        std::ifstream fileOne("/Users/michel/CLionProjects/file_testing/Data/u.data");
+        std::string line;
+        //bool isOpen = fileOne.is_open();
+        while(!fileOne.eof() && line != " "){
+            std::getline(fileOne, line, '\t');
+            if(line != " " && line != ""){
+                data["userId"].push_back(line);
+                std::cout<<"Successfully added review: " << line;
+            }
 
-		std::getline(ss,item,delim);
-		temp = std::stoi(item);
-		review.set_movieId(temp);
+            std::getline(fileOne, line, '\t');
+            if(line != " " && line != ""){
+                data["movieId"].push_back(line);
+                std::cout<< " " << line;
+            }
 
-		std::getline(ss,item,delim);
-		temp = std::stoi(item);
-		review.set_rating(temp);
+            std::getline(fileOne, line, '\t');
+            if(line != " " && line != ""){
+                data["rating"].push_back(line);
+                std::cout<< " " << line;
+            }
 
-		std::getline(ss,item,delim);
-		temp = std::stoi(item);
-		review.set_time_stamp(temp);
+            std::getline(fileOne, line, '\n');
+            if(line != " " && line != ""){
+                data["time_stamp"].push_back(line);
+                std::cout<< " " << line <<std::endl;
+            }
+        }
 
-		reviews.push_back(review);
-	}
+        std::ifstream fileTwo("/Users/michel/CLionProjects/file_testing/Data/u.item");
+        line = "";
+        int itemId;
+        while(!fileTwo.eof() && line != " "){
+            std::getline(fileTwo,line,'|');
+            if(line != " " && line != ""){
+                itemId = std::stoi(line);
+                std::cout<<"Successfully added movie: " << " " << itemId;
+            }
 
-	void splitMovies(const std::string &s){
-		std::stringstream ss;
-    	ss.str(s);
-		std::string item;
+            std::getline(fileTwo,line,'|');
+            if(line != " " && line != ""){
+                movies[itemId] = line;
+                std::cout<< " " << line << std::endl;
+            }
 
-		std::getline(ss,item,'\t');
-		if(movieKeys.find(std::stoi(item)) == movieKeys.end()){
-			int itemId = std::stoi(item);
-
-			std::getline(ss,item,'\t');
-
-			movieKeys[itemId] = item;
-		}
-	}
-
-	//user_id (integer), item_id(integer), rating(integer), time_stamp(integer), movie_title(string).
-	//return array of data
-	void deserialize_data(){
-		std::ifstream file;
-		try{
-		file.open("Data/u.data");
-		
-		std::string line;
-		while(std::getline(file,line)){
-			splitReviews(line, '\t');
-		}
-
-		}catch(std::string e){
-			std::cout<<e<<std::endl;
-			return;
-		}
-
-		try{
-		file.open("Data/u.item");
-		
-		std::string line;
-		while(std::getline(file, line)){
-			splitMovies(line);
-		}
-
-		}catch(std::string e){
-			std::cout<<e<<std::endl;
-			return;
-		}
-		
-		//assign movie titles to the reviews
-		for(int i = 0; i < reviews.size(); i++){
-			auto it = movieKeys.find(reviews[i].get_movieId());
-			reviews[i].set_movieTitle(it -> second);
-		}
-	}
+            std::getline(fileTwo,line,'\n');
+        }
+    }
 public:
 	Data_Management(){
-		deserialize_data();
+		Deserialize();
 	}
 
 	Review get_a_review(int index){
-		return reviews[index];
+
 	}
 
 	std::vector<Review> get_reviews(){
-		return reviews;
+
 	}
 
 	//user_id (integer), item_id(integer), rating(integer), time_stamp(integer), movie_title(string).
 	std::vector<int> getUserIdVec(){
-		std::vector<int> userIds;
-		for(int i = 0; i < reviews.size(); i++){
-			userIds.push_back(reviews[i].get_userId());
-		}
-		return userIds;
+
 	}
 
 	std::vector<int> getItemIdVec(){
-		std::vector<int> itemIds;
-		for(int i = 0; i < reviews.size(); i++){
-			itemIds.push_back(reviews[i].get_movieId());
-		}
-		return itemIds;
+
 	}
 
 	std::vector<int> getRatingVec(){
-		std::vector<int> ratings;
-		for(int i = 0; i < reviews.size(); i++){
-			ratings.push_back(reviews[i].get_rating());
-		}
-		return ratings;
+
 	}
 
 	std::vector<int> getTimeStampVec(){
-		std::vector<int> timeStamps;
-		for(int i = 0; i < reviews.size(); i++){
-			timeStamps.push_back(reviews[i].get_timeStamp());
-		}
-		return timeStamps;
+
 	}
 
 	std::vector<std::string> getMovieTitleVec(){
-		std::vector<std::string> movieTitles;
-		for(int i = 0; i < reviews.size(); i++){
-			movieTitles.push_back(reviews[i].get_movieTitle());
-		}
-		return movieTitles;
+
 	}
 };
