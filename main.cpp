@@ -9,6 +9,8 @@
 #include<map>
 #include<vector>
 #include<cstdio>
+#include<fstream>
+#include<ctime>
 //create a map of key string, val vector<int or string> therefore template needed
 
 const int QUIT = -1;
@@ -17,104 +19,214 @@ const int ITEM_ID = 2;
 const int RATING = 3;
 const int TIME_STAMP = 4;
 const int MOVIE_TITLE = 5;
-//const int QUICK_SORT = 6;
-//const int MERGE_SORT = 7;
-//const int BUCKET_SORT = 8;
+const int QUICK_SORT = 6;
+const int MERGE_SORT = 7;
+const int BUCKET_SORT = 8;
 const int DESCENDING = 9;
 const int ASCENDING = 10;
 
 template<class t>
-void print_results(std::vector<t> my_data){
-    for(int i = 0; i < my_data.size(); i++)
-        std::cout<<my_data[i]<<std::endl;
-}
+void print_results(std::vector<t>);
 
-void mergeSort(std::vector<int> my_data, int sort_property){
-    //start time
+void mergeSort(std::vector<int>, int);
+//continue this for all methods, place all under main
 
-    int start = 0;
-    int end = my_data.size() - 1;
-    if(sort_property == ASCENDING){
-        Merge_Sort_Ascending merge(my_data, start, end);
-        print_results(my_data);
-    }else if(sort_property == DESCENDING){
-        Merge_Sort_Descending merge(my_data, start, end);
-        print_results(my_data);
+//FILE CREATION AND DELETION
+template<class t>
+void createReport(std::vector<t> results,int sortingMethod, int sort_property){
+    switch(sortingMethod){
+        case QUICK_SORT:{
+
+            if(sort_property == ASCENDING){
+                char reportName[] = "Results/quick_sort_ascending_results.txt";
+
+                //Deletes the file if already exists
+                if (remove(reportName) != 0)
+                    perror("File deletion failed");
+                else{
+                    //create file
+                    std::ofstream MyFile(reportName);
+                    //write data to file
+                    for(int i = 0; i < results.size(); i++){
+                        MyFile << results[i] << std::endl;
+                    }
+                }
+            }
+
+            if(sort_property == DESCENDING){
+                char reportName[] = "Results/quick_sort_descending_results.txt";
+
+                //Deletes the file if already exists
+                if (remove(reportName) != 0)
+                    perror("File deletion failed");
+                else{
+                    //create file
+                    std::ofstream MyFile(reportName);
+                    //write data to file
+                    for(int i = 0; i < results.size(); i++){
+                        MyFile << results[i] << std::endl;
+                    }
+                }
+            }
+        }break;
+
+        case MERGE_SORT:{
+            if(sort_property == ASCENDING){
+                char reportName[] = "Results/merge_sort_ascending_results.txt";
+
+                //Deletes the file if already exists
+                if (remove(reportName) != 0)
+                    perror("File deletion failed");
+                else{
+                    //create file
+                    std::ofstream MyFile(reportName);
+                    //write data to file
+                    for(int i = 0; i < results.size(); i++){
+                        MyFile << results[i] << std::endl;
+                    }
+                }
+            }
+
+            if(sort_property == DESCENDING){
+                char reportName[] = "Results/merge_sort_descending_results.txt";
+
+                //Deletes the file if already exists
+                if (remove(reportName) != 0)
+                    perror("File deletion failed");
+                else{
+                    //create file
+                    std::ofstream MyFile(reportName);
+                    //write data to file
+                    for(int i = 0; i < results.size(); i++){
+                        MyFile << results[i] << std::endl;
+                    }
+                }
+            }
+        }break;
+        case BUCKET_SORT:{
+            if(sort_property == ASCENDING){
+                char reportName[] = "Results/bucket_sort_ascending_results.txt";
+
+                //Deletes the file if already exists
+                if (remove(reportName) != 0)
+                    perror("File deletion failed");
+                else{
+                    //create file
+                    std::ofstream MyFile(reportName);
+                    //write data to file
+                    for(int i = 0; i < results.size(); i++){
+                        MyFile << results[i] << std::endl;
+                    }
+                }
+            }
+
+            if(sort_property == DESCENDING){
+                char reportName[] = "Results/bucket_sort_descending_results.txt";
+
+                //Deletes the file if already exists
+                if (remove(reportName) != 0)
+                    perror("File deletion failed");
+                else{
+                    //create file
+                    std::ofstream MyFile(reportName);
+                    //write data to file
+                    for(int i = 0; i < results.size(); i++){
+                        MyFile << results[i] << std::endl;
+                    }
+                }
+            }
+        }break;
     }
-
-    //end time
-    //print results to text file
-    //return time difference
 }
 
 void mergeSort(std::vector<std::string> my_data, int sort_property){
     //start time
+    time_t t_start = time(nullptr);
 
     int start = 0;
     int end = my_data.size() - 1;
     if(sort_property == ASCENDING){
         Merge_Sort_Ascending merge(my_data, start, end);
-        print_results(my_data);
+        //print_results(my_data);
     }else if(sort_property == DESCENDING){
         Merge_Sort_Descending merge(my_data, start, end);
-        print_results(my_data);
+        //print_results(my_data);
     }
 
     //end time
+    time_t t_end = time(nullptr);
+    //output time difference
+    std::cout<<"Merge Sort took "<< t_end - t_start << " second(s)."<<std::endl;
     //print to text file
-    //return time difference
+    createReport(my_data,MERGE_SORT,sort_property);
 }
 
 void quickSort(std::vector<int> my_data, int sort_property){
     //start time
+    time_t t_start = time(nullptr);
 
     int low = 0;
     int high = my_data.size() / sizeof(my_data[0]);
     if(sort_property == ASCENDING){
         Quick_Sort_Ascending quick(my_data,low, high);
-        print_results(my_data);
+        //print_results(my_data);
     }else if(sort_property == DESCENDING){
         Quick_Sort_Descending quick(my_data,low, high);
-        print_results(my_data);
+        //print_results(my_data);
     }
 
     //end time
+    time_t t_end = time(nullptr);
+    //output time difference
+    std::cout<< "Quick Sort took " << t_end - t_start << " second(s)." <<std::endl;
     //print results to text file
-    //return time difference
+    createReport(my_data,QUICK_SORT,sort_property);
 }
 
 void quickSort(std::vector<std::string> my_data, int sort_property){
     //start time
+    time_t t_start = time(nullptr);
 
     int low = 0;
     int high = my_data.size() / sizeof(my_data[0]);
     if(sort_property == ASCENDING){
         Quick_Sort_Ascending quick(my_data,low, high);
-        print_results(my_data);
+        //print_results(my_data);
     }else if(sort_property == DESCENDING){
         Quick_Sort_Descending quick(my_data,low, high);
-        print_results(my_data);
+        //print_results(my_data);
     }
 
     //end time
+    time_t t_end = time(nullptr);
+    //output time difference
+    std::cout<<"Quick Sort took "<<t_end - t_start<<" second(s)."<<std::endl;
     //print results to text file
-    //return time difference
+    createReport(my_data,QUICK_SORT,sort_property);
 }
 
 void bucketSort(std::vector<int> my_data, int sort_property){
     //start time
+    time_t t_start = time(nullptr);
 
     //end time
+    time_t t_end = time(nullptr);
+    //output time difference
+    std::cout<<"Bucket Sort took "<< t_end - t_start <<" second(s)."<<std::endl;
     //print results to text file
-    //return time difference
+    createReport(my_data,BUCKET_SORT,sort_property);
 }
 
 void bucketSort(std::vector<std::string> my_data, int sort_property){
     //start time
+    time_t t_start = time(nullptr);
 
     //end time
+    time_t t_end = time(nullptr);
+    //output time difference
+    std::cout<<"Bucket Sort took "<< t_end - t_start <<" second(s)."<<std::endl;
     //print results to text file
-    //return time difference
+    createReport(my_data,BUCKET_SORT,sort_property);
 }
 
 //user_id (integer), item_id(integer), rating(integer), time_stamp(integer), movie_title(string).
@@ -267,4 +379,34 @@ int main(){
         }
         closingScreen();
     }
+}
+
+//Methods that make the magic happen go here... clean it up nicely!
+
+template<class t>
+void print_results(std::vector<t> my_data){
+    for(int i = 0; i < my_data.size(); i++)
+        std::cout<<my_data[i]<<std::endl;
+}
+
+void mergeSort(std::vector<int> my_data, int sort_property){
+    //start time
+    time_t t_start = time(nullptr);
+
+    int start = 0;
+    int end = my_data.size() - 1;
+    if(sort_property == ASCENDING){
+        Merge_Sort_Ascending merge(my_data, start, end);
+        //print_results(my_data);
+    }else if(sort_property == DESCENDING){
+        Merge_Sort_Descending merge(my_data, start, end);
+        //print_results(my_data);
+    }
+
+    //end time
+    time_t t_end = time(nullptr);
+    //output time difference
+    std::cout<<"Bucket Sort took "<< t_end - t_start <<" second(s)."<<std::endl;
+    //print results to text file
+    createReport(my_data,MERGE_SORT,sort_property);
 }
