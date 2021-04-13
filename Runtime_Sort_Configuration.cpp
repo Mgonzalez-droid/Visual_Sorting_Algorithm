@@ -32,6 +32,19 @@ void print_results(std::vector<t> my_data){
     for(int i = 0; i < my_data.size(); i++)
         std::cout<<my_data[i]<<std::endl;
 }
+template<class t>
+void test(std::vector<t> my_data, int sort_property){
+    if(sort_property == ASCENDING){
+        Bucket_Sort_Ascending sort(my_data);
+        print_results(sort.ret_data_s);
+    }
+
+    if(sort_property == DESCENDING){
+        Bucket_Sort_Descending sort(my_data);
+        print_results(sort.ret_data_s);
+    }
+
+}
 
 //For file creation and deletion
 
@@ -155,41 +168,56 @@ void sort_data(int choice, int sort_property){
     switch(choice){
         case USER_ID :{
             std::vector<int> my_data = data.getUserIdVec();
+            test(my_data,sort_property);
+            /*
             mergeSort(my_data,sort_property);
             quickSort(my_data,sort_property);
             bucketSort(my_data,sort_property);
+             */
         };
             break;
 
         case ITEM_ID :{
             std::vector<int> my_data = data.getItemIdVec();
+            test(my_data,sort_property);
+            /*
             mergeSort(my_data,sort_property);
             quickSort(my_data,sort_property);
             bucketSort(my_data,sort_property);
+             */
         };
             break;
 
         case RATING :{
             std::vector<int> my_data = data.getRatingVec();
+            test(my_data,sort_property);
+            /*
             mergeSort(my_data,sort_property);
             quickSort(my_data,sort_property);
             bucketSort(my_data,sort_property);
+             */
         };
             break;
 
         case TIME_STAMP :{
             std::vector<int> my_data = data.getTimeStampVec();
+            test(my_data,sort_property);
+            /*
             mergeSort(my_data,sort_property);
             quickSort(my_data,sort_property);
             bucketSort(my_data,sort_property);
+             */
         };
             break;
 
         case MOVIE_TITLE :{
             std::vector<std::string> my_data = data.getMovieTitleVec();
+            test(my_data,sort_property);
+            /*
             mergeSort(my_data,sort_property);
             quickSort(my_data,sort_property);
             bucketSort(my_data,sort_property);
+             */
         };
             break;
     }
