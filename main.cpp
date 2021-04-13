@@ -13,7 +13,23 @@
 #include<cstdio>
 #include<fstream>
 #include<ctime>
-//create a map of key string, val vector<int or string> therefore template needed
+
+/*
+ * TODO:Fix and Test
+ *      - Merge sort Ascending (FIX and TEST)
+ *      - Merge sort Descending (FIX and TEST)
+ *      - Quick Sort Ascending (TEST)
+ *      - Quick Sort Descending (TEST)
+ *      - Bucket Sort Ascending (TEST)
+ *      - Bucket Sort Descending (TEST)
+ *      - timing on some function, could be due to i.e. Merge sort not working
+ *
+ * TODO:Clean up code:
+ *      - add templates to sort functions
+ *      - add sort functions to seperate class "Runtime_Sort_Configuration.cpp" (all static)
+ *      - add UI functions to seperate class "Command_Line_UI.cpp" (all static)
+ */
+
 
 const int QUIT = -1;
 const int USER_ID = 1;
