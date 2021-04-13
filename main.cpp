@@ -6,6 +6,8 @@
 #include"Merge_Sort_Ascending.cpp"//max
 #include"Quick_Sort_Descending.cpp"//min
 #include"Quick_Sort_Ascending.cpp"//max
+#include"Bucket_Sort_Ascending.cpp"
+#include"Bucket_Sort_Descending.cpp"
 #include<map>
 #include<vector>
 #include<cstdio>
@@ -69,6 +71,7 @@ int main(){
         quit = closingScreen();
         if(quit == 'n' || quit == 'N'){
             continue_sorting = false;
+
         }
     }
 }
@@ -328,6 +331,14 @@ void bucketSort(std::vector<int> my_data, int sort_property){
     //start time
     time_t t_start = time(nullptr);
 
+    if(sort_property == ASCENDING){
+        Bucket_Sort_Ascending sort(my_data);
+    }
+
+    if(sort_property == DESCENDING){
+        Bucket_Sort_Descending sort(my_data);
+    }
+
     //end time
     time_t t_end = time(nullptr);
     //output time difference
@@ -339,6 +350,14 @@ void bucketSort(std::vector<int> my_data, int sort_property){
 void bucketSort(std::vector<std::string> my_data, int sort_property){
     //start time
     time_t t_start = time(nullptr);
+
+    if(sort_property == ASCENDING){
+        Bucket_Sort_Ascending sort(my_data);
+    }
+
+    if(sort_property == DESCENDING){
+        Bucket_Sort_Descending sort(my_data);
+    }
 
     //end time
     time_t t_end = time(nullptr);
