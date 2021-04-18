@@ -7,9 +7,9 @@
 
 const int USER_ID = 1;
 const int ITEM_ID = 2;
-const int RATING = 3;
-const int TIME_STAMP = 4;
-const int MOVIE_TITLE = 5;
+const int MOVIE_TITLE = 3;
+const int RATING = 4;
+const int TIME_STAMP = 5;
 const int QUICK_SORT = 6;
 const int MERGE_SORT = 7;
 const int BUCKET_SORT = 8;
@@ -35,13 +35,35 @@ void print_results(std::vector<t> my_data){
 template<class t>
 void test(std::vector<t> my_data, int sort_property){
     if(sort_property == ASCENDING){
-        Bucket_Sort_Ascending sort(my_data);
-        print_results(sort.ret_data_s);
+        //Bucket_Sort_Ascending sort(my_data);
+        //print_results(sort.ret_data_i);
+
+        //int low = 0;
+        //int high = my_data.size() / sizeof(my_data[0]);
+        //Quick_Sort_Ascending sort(my_data, low, high);
+        //print_results(my_data);
+
+        int start = 0;
+        int end = my_data.size() - 1;
+        Merge_Sort_Ascending sort(my_data,start,end);
+        print_results(my_data);
+
     }
 
     if(sort_property == DESCENDING){
-        Bucket_Sort_Descending sort(my_data);
-        print_results(sort.ret_data_s);
+        //Bucket_Sort_Descending sort(my_data);
+        //print_results(sort.ret_data_i);
+
+        //int low = 0;
+        //int high = my_data.size() / sizeof(my_data[0]);
+        //Quick_Sort_Descending sort(my_data, low, high);
+        //print_results(my_data);
+
+        int start = 0;
+        int end = my_data.size() - 1;
+        Merge_Sort_Descending sort(my_data,start,end);
+        print_results(my_data);
+
     }
 
 }
