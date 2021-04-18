@@ -35,7 +35,7 @@ struct Merge_Sort_Ascending{
             if(one.length() == two.length()){
                 //are they the same title?
                 if(one.compare(two) == 0){
-                    result = false; // is "Star Wars" > "Star Wars"; false!
+                    result = true; // is "Star Wars" > "Star Wars"; true! here...
                 }else{
                     bool resolution = false;
                     int index = 0;
@@ -66,7 +66,7 @@ struct Merge_Sort_Ascending{
             if(one.length() == two.length()){
                 //are they the same title?
                 if(one.compare(two) == 0){
-                    result = false; // is "Star Wars" < "Star Wars"; false!
+                    result = true; // is "Star Wars" < "Star Wars"; true! here...
                 }else{
                     bool resolution = false;
                     int index = 0;
@@ -116,7 +116,7 @@ void merge(std::string data[], int left, int mid, int right)
   k = left;
   while (i < n1 && j < n2) 
   {
-    //if (X[i] <= Y[j]) //changed, ORiginal line
+    //if (X[i] <= Y[j]) //changed, Original line
     if(compareString(X[i], Y[j], '<'))
     {
       data[k] = X[i];
