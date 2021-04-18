@@ -39,14 +39,14 @@ void test(std::vector<t> my_data, int sort_property){
         //print_results(sort.ret_data_i);
 
         //int low = 0;
-        //int high = my_data.size() / sizeof(my_data[0]);
+        //int high = my_data.size()-1;
         //Quick_Sort_Ascending sort(my_data, low, high);
-        //print_results(my_data);
+        //print_results(sort.ret_data_i());
 
         int start = 0;
         int end = my_data.size() - 1;
         Merge_Sort_Ascending sort(my_data,start,end);
-        print_results(my_data);
+        print_results(sort.ret_data_s());
 
     }
 
@@ -55,14 +55,14 @@ void test(std::vector<t> my_data, int sort_property){
         //print_results(sort.ret_data_i);
 
         //int low = 0;
-        //int high = my_data.size() / sizeof(my_data[0]);
+        //int high = my_data.size()-1;
         //Quick_Sort_Descending sort(my_data, low, high);
-        //print_results(my_data);
+        //print_results(sort.ret_data_i());
 
         int start = 0;
         int end = my_data.size() - 1;
         Merge_Sort_Descending sort(my_data,start,end);
-        print_results(my_data);
+        print_results(sort.ret_data_s());
 
     }
 

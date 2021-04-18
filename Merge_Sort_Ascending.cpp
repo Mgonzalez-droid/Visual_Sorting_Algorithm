@@ -2,12 +2,28 @@
 #include<iostream>
 //Sort values in Ascending order
 struct Merge_Sort_Ascending{
-    Merge_Sort_Ascending(std::vector<int>& data, int low, int high){
-        sort_i(data, low, high);
+    int* arr;
+    std::string* arrs;
+
+    std::vector<int> ret_data_i(){
+        std::vector<int> vec(arr + 0, arr + 100000);
+        return vec;
     }
 
-    Merge_Sort_Ascending(std::vector<std::string>& data, int low, int high){
-        sort_s(data, low, high);
+    std::vector<std::string> ret_data_s(){
+        std::vector<std::string> vec(arrs + 0, arrs + 100000);
+        return vec;
+    }
+
+    Merge_Sort_Ascending(std::vector<int> data, int low, int high){
+        this -> arr = &data[0];
+        sort_i(arr, low, high);
+
+    }
+
+    Merge_Sort_Ascending(std::vector<std::string> data, int low, int high){
+        this -> arrs = &data[0];
+        sort_s(arrs, low, high);
     }
 
 //__________STRING______________
@@ -80,7 +96,7 @@ struct Merge_Sort_Ascending{
 
 //From Notes....
     // Merge two subarrays from arr
-void merge(std::vector<std::string>& data, int left, int mid, int right) 
+void merge(std::string data[], int left, int mid, int right)
 {
   // Create X ← arr[left..mid] & Y ← arr[mid+1..right]
   int n1 = mid - left + 1;
@@ -130,7 +146,7 @@ void merge(std::vector<std::string>& data, int left, int mid, int right)
 }
 
 
-void sort_s(std::vector<std::string>& data, int left, int right) 
+void sort_s(std::string data[], int left, int right)
 {
   if (left < right) 
   {
@@ -150,7 +166,7 @@ void sort_s(std::vector<std::string>& data, int left, int right)
 
 //From Notes....
     // Merge two subarrays from arr
-void merge(std::vector<int>& data, int left, int mid, int right) 
+void merge(int data[], int left, int mid, int right)
 {
   // Create X ← arr[left..mid] & Y ← arr[mid+1..right]
   int n1 = mid - left + 1;
@@ -199,7 +215,7 @@ void merge(std::vector<int>& data, int left, int mid, int right)
 }
 
 
-void sort_i(std::vector<int>& data, int left, int right) 
+void sort_i(int data[], int left, int right)
 {
   if (left < right) 
   {

@@ -2,17 +2,33 @@
 #include<iostream>
 //Sort values in Descending order
 struct Quick_Sort_Descending{
-    Quick_Sort_Descending(std::vector<int>& data, int low, int high){
-        sort_i(data, low, high);
+
+    int* arr;
+    std::string* arrs;
+
+    std::vector<int> ret_data_i(){
+        std::vector<int> vec(arr + 0, arr + 100000);
+        return vec;
     }
 
-    Quick_Sort_Descending(std::vector<std::string>& data, int low, int high){
-        sort_s(data, low, high);
+    std::vector<std::string> ret_data_s(){
+        std::vector<std::string> vec(arrs + 0, arrs + 100000);
+        return vec;
+    }
+
+    Quick_Sort_Descending(std::vector<int> data, int low, int high){
+        this -> arr = &data[0];
+        sort_i(arr, low, high);
+    }
+
+    Quick_Sort_Descending(std::vector<std::string> data, int low, int high){
+        this -> arrs = &data[0];
+        sort_s(arrs, low, high);
     }
     //FROM NOTES: CITE?
 
     //____________INTEGERS_____________
-    void sort_i(std::vector<int>& data, int low, int high) {
+    void sort_i(int data[], int low, int high) {
         if (low < high){
             int pivot = partition(data, low, high);
             sort_i(data, low, pivot - 1);
@@ -26,7 +42,7 @@ struct Quick_Sort_Descending{
         *b = t;
     }
 
-    int partition(std::vector<int> data, int low, int high){
+    int partition(int data[], int low, int high){
         // Select the pivot element
         int pivot = data[low];
         int up=low, down=high;
@@ -118,7 +134,7 @@ struct Quick_Sort_Descending{
         return result;
     }
 
-    void sort_s(std::vector<std::string>& data, int low, int high) {
+    void sort_s(std::string data[], int low, int high) {
         if (low < high){
             int pivot = partition(data, low, high);
             sort_s(data, low, pivot - 1);
@@ -132,7 +148,7 @@ struct Quick_Sort_Descending{
         *b = t;
     }
 
-    int partition(std::vector<std::string> data, int low, int high){
+    int partition(std::string data[], int low, int high){
         // Select the pivot element
         std::string pivot = data[low];
         int up=low, down=high;

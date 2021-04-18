@@ -13,7 +13,7 @@ std::pair<int,char> mainScreen(){
 
     std::cout<<"WELCOME, PLEASE SELECT DATA TO BE SORTED"<<std::endl;
     std::cout<<"----------------------------------------"<<std::endl;
-    std::cout<<std::endl<<"1) User ID\n2) Item ID\n3) Movie Title\n4) Rating\n5)Time Stamp\nTo quit \"-1\""<<std::endl;
+    std::cout<<std::endl<<"1) User ID\n2) Item ID\n3) Movie Title\n4) Rating\n5) Time Stamp\nTo quit \"-1\""<<std::endl;
     std::cout<<std::endl<<"Choice (Type an integer 1-5, or -1): ";
     std::cin>> dataSelection;
 
