@@ -54,9 +54,9 @@ std::pair<int,char> mainScreen(){
 
     return choices;
 }
-//TODO:implement or delete this
+
 void clearScreen(){
-    system("clear");
+    std::cout << "\033[2J\033[1;1H";
 }
 
 void sortingSplashScreen(){

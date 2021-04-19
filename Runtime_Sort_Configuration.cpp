@@ -35,8 +35,8 @@ void print_results(std::vector<t> my_data){
 template<class t>
 void test(std::vector<t> my_data, int sort_property){
     if(sort_property == ASCENDING){
-        Bucket_Sort_Ascending sort(my_data);
-        print_results(sort.ret_data_i);
+        //Bucket_Sort_Ascending sort(my_data);
+        //print_results(sort.ret_data_i);
 
         //int low = 0;
         //int high = my_data.size()-1;
@@ -51,8 +51,8 @@ void test(std::vector<t> my_data, int sort_property){
     }
 
     if(sort_property == DESCENDING){
-        Bucket_Sort_Descending sort(my_data);
-        print_results(sort.ret_data_i);
+        //Bucket_Sort_Descending sort(my_data);
+        //print_results(sort.ret_data_i);
 
         //int low = 0;
         //int high = my_data.size()-1;

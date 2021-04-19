@@ -10,11 +10,13 @@ struct Bucket_Sort_Descending{
     Bucket_Sort_Descending(std::vector<int>& passedData){
         this -> bucket_size = passedData.size();
         this -> org_data_i = passedData;
+        sort_i();
     }
 
     Bucket_Sort_Descending(std::vector<std::string>& passedData){
         this -> bucket_size = passedData.size();
         this -> org_data_s = passedData;
+        sort_s();
     }
 
     int addTrailingZeros(int num, int trailingZeros){
@@ -36,6 +38,10 @@ struct Bucket_Sort_Descending{
         ss >> str;
 
         int length = str.length();
+
+        if(length > 5) //removes elements larger than 100000
+            length = 5;
+
         int trailingZeros = length - 1;
         char c = str[0];
         int num = c - '0';
@@ -58,9 +64,11 @@ struct Bucket_Sort_Descending{
             std::sort(bucket[i].begin(), bucket[i].end(), std::greater<int>()); //what is changed
         }
 
-        for(int i = 0; i < bucket_size; i++)
-            for (int j = 0; j < bucket[i].size(); j++)
+        for(int i = bucket_size - 1; i > 0; i--){
+            for(int j = 0; j < bucket[i].size(); j++){
                 ret_data_i.push_back(bucket[i][j]);
+            }
+        }
     }
 
 
@@ -82,9 +90,11 @@ struct Bucket_Sort_Descending{
         for(auto it : bucket)
             std::sort(it.second.begin(), it.second.end(), std::greater<std::string>());
 
-        for(auto it : bucket)
-            for(int j = 0; j < it.second.size(); j++)
-                ret_data_s.push_back(it.second[j]);
+        for(int i = bucket_size - 1; i > 0; i--){
+            for(int j = 0; j < bucket[i].size(); j++){
+                ret_data_s.push_back(bucket[i][j]);
+            }
+        }
     }
 
 };

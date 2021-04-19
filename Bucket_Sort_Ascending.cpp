@@ -42,6 +42,10 @@ struct Bucket_Sort_Ascending{
 		ss >> str;
 		
 		int length = str.length();
+
+		if(length > 5) //removes elements larger than 100000
+		    length = 5;
+
 		int trailingZeros = length - 1;
 		char c = str[0];
 		int num = c - '0';

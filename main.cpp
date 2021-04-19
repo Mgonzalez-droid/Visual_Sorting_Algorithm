@@ -10,7 +10,6 @@
  *      - Fix string processing for all algorithms
  *      - Fix Descending bucket
  *      - Fix UI
- *          - clear screen (optional)
  *          - spacing
  *      - eliminate extraneous comments
  *      - timing on some function, could be due to i.e. Merge sort not working
