@@ -25,11 +25,10 @@ int main(){
 
     while(continue_sorting){
         sortingPreferences = mainScreen();
-        //clearScreen(); need to troubleshoot
         if( sortingPreferences.first == -1){
             continue_sorting = false;
         } else{
-
+            clearScreen();
             sortingSplashScreen();
 
             if(sortingPreferences.second == 'b' || sortingPreferences.second == 'B'){
@@ -41,6 +40,7 @@ int main(){
 
         }
         quit = closingScreen();
+        clearScreen();
         if(quit == 'n' || quit == 'N'){
             continue_sorting = false;
 

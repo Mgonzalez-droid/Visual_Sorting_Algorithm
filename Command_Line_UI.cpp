@@ -28,6 +28,8 @@ std::pair<int,char> mainScreen(){
         }
     }
 
+    clearScreen();
+
     if(dataSelection != -1){
         std::cout<<"DATA SELECTED, PLEASE SELECT SORTING FORMAT"<<std::endl;
         std::cout<<"-------------------------------------------"<<std::endl;

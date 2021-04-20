@@ -231,6 +231,7 @@ void sort_i(int data[], int left, int right)
      */
     int* arr;
     std::string* arrs;
+    std::vector<std::string> vec_s;
 
     std::vector<int> ret_data_i(){
         std::vector<int> vec(arr + 0, arr + 100000);
@@ -238,8 +239,7 @@ void sort_i(int data[], int left, int right)
     }
 
     std::vector<std::string> ret_data_s(){
-        std::vector<std::string> vec(arrs + 0, arrs + 100000);
-        return vec;
+        return vec_s;
     }
 
     Merge_Sort_Descending(std::vector<int> data, int low, int high){
@@ -251,6 +251,8 @@ void sort_i(int data[], int left, int right)
     Merge_Sort_Descending(std::vector<std::string> data, int low, int high){
         this -> arrs = &data[0];
         sort_s(arrs, low, high);
+        std::vector<std::string> vec(arrs + 0, arrs + 1682);
+        this -> vec_s = vec;
     }
 
 //__________STRING______________
