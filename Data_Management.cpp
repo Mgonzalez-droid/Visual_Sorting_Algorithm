@@ -1,10 +1,8 @@
 //FINAL_PROJECT_DATA_MANAGEMENT
 #include<fstream>
 #include<iostream>
-#include<sstream>
 #include<vector>
 #include<map>
-#include"Review.cpp"
 
 //const std::string FILE_ONE = "file_one";
 //only need to load u.data and u.item, we dont need to specify, that is all the data we need
