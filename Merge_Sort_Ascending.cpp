@@ -59,7 +59,29 @@ struct Merge_Sort_Ascending{
                         }
                     }
             }else{
-                result = one.length() > two.length();
+                //result = one.length() > two.length();
+                if(one[0] != two[0])
+                    result = one[0] > two[0];
+                else{
+                    bool resolution = false;
+                    int index = 0;
+                    std::string choice;
+                    while(resolution != true){
+                        if(one[index] != two[index]){
+                            if(one[index] > two[index]){ //this part decides ascending descending
+                                resolution = true;
+                                choice = "one";
+                            } else{
+                                resolution = true;
+                                choice = "two";
+                            }
+                        }
+                        index += 1;
+                    }
+                    if(choice == "one"){
+                        result = true;
+                    }
+                }
             }
         }
 
@@ -90,7 +112,29 @@ struct Merge_Sort_Ascending{
                         }
                     }
             }else{
-                result = one.length() < two.length();
+                //result = one.length() < two.length();
+                if(one[0] != two[0])
+                    result = one[0] < two[0];
+                else {
+                    bool resolution = false;
+                    int index = 0;
+                    std::string choice;
+                    while (resolution != true) {
+                        if (one[index] != two[index]) {
+                            if (one[index] > two[index]) { //this part decides ascending descending
+                                resolution = true;
+                                choice = "one";
+                            } else {
+                                resolution = true;
+                                choice = "two";
+                            }
+                        }
+                        index += 1;
+                    }
+                    if (choice == "one") {
+                        result = true;
+                    }
+                }
             }
         }
         return result;
@@ -110,6 +154,11 @@ void merge(std::string data[], int left, int mid, int right)
     X[i] = data[left + i];
   for (int j = 0; j < n2; j++)
     Y[j] = data[mid + 1 + j];
+
+    //for debugging
+    //if(n1 == 1682 /2){
+    //    std::cout <<"";
+    //}
 
   // Merge the arrays X and Y into arr
   int i, j, k;
