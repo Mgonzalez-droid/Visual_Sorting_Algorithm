@@ -78,7 +78,7 @@ struct Quick_Sort_Ascending{
             if(one.length() == two.length()){
                 //are they the same title?
                 if(one.compare(two) == 0){
-                    result = false; // is "Star Wars" > "Star Wars"; false!
+                    result = false; // is "Star Wars" > "Star Wars"; false! here...
                 }else{
                     bool resolution = false;
                     int index = 0;
@@ -95,12 +95,34 @@ struct Quick_Sort_Ascending{
                         }
                         index += 1;
                     }
-                        if(choice == "one"){
-                            result = true;
-                        }
+                    if(choice == "one"){
+                        result = true;
                     }
+                }
             }else{
-                result = one.length() > two.length();
+                //result = one.length() > two.length();
+                if(one[0] != two[0])
+                    result = one[0] > two[0];
+                else{
+                    bool resolution = false;
+                    int index = 0;
+                    std::string choice;
+                    while(resolution != true){
+                        if(one[index] != two[index]){
+                            if(one[index] > two[index]){ //this part decides ascending descending
+                                resolution = true;
+                                choice = "one";
+                            } else{
+                                resolution = true;
+                                choice = "two";
+                            }
+                        }
+                        index += 1;
+                    }
+                    if(choice == "one"){
+                        result = true;
+                    }
+                }
             }
         }
 
@@ -126,12 +148,34 @@ struct Quick_Sort_Ascending{
                         }
                         index += 1;
                     }
-                        if(choice == "one"){
-                            result = true;
-                        }
+                    if(choice == "one"){
+                        result = true;
                     }
+                }
             }else{
-                result = one.length() < two.length();
+                //result = one.length() < two.length();
+                if(one[0] != two[0])
+                    result = one[0] < two[0];
+                else {
+                    bool resolution = false;
+                    int index = 0;
+                    std::string choice;
+                    while (resolution != true) {
+                        if (one[index] != two[index]) {
+                            if (one[index] > two[index]) { //this part decides ascending descending
+                                resolution = true;
+                                choice = "one";
+                            } else {
+                                resolution = true;
+                                choice = "two";
+                            }
+                        }
+                        index += 1;
+                    }
+                    if (choice == "one") {
+                        result = true;
+                    }
+                }
             }
         }
         return result;
