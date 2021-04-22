@@ -1,6 +1,5 @@
 #include<vector>
 #include<iostream>
-//Sort values in Descending order
 struct Quick_Sort_Descending{
 
     int* arr;
@@ -67,117 +66,57 @@ struct Quick_Sort_Descending{
     }
 
     //___________STRINGS__________
-    //Helper function to compare strings, compares first string length. If they are the same
-    //length and word it returns false. If the strings differ in length it does a comparison
-    //of length using the operation passed i.e "Rocky" < "Star Wars" is true (1)
+
     bool compareString(std::string one, std::string two, char operation){
-        bool result = false;
+
+        //correct issue comparing upper an lower case characters
+        if(islower(one[0]))
+            one[0] = toupper(one[0] && isalpha(one[0]));
+
+        if(islower(two[0]))
+            two[0] = toupper(two[0] && isalpha(two[0]));
+
+
+        int res;
+        bool isTrue = false;
+
         if(operation == '>'){
-            //are they the same length?
-            if(one.length() == two.length()){
-                //are they the same title?
-                if(one.compare(two) == 0){
-                    result = true; // is "Star Wars" > "Star Wars"; true! here...
+            res = one.compare(two);
+
+            if(res != 0){
+                if(res > 0){
+                    //one is greater than two
+                    isTrue = true;
                 }else{
-                    bool resolution = false;
-                    int index = 0;
-                    std::string choice;
-                    while(resolution != true){
-                        if(one[index] != two[index]){
-                            if(one[index] > two[index]){ //this part decides ascending descending
-                                resolution = true;
-                                choice = "one";
-                            } else{
-                                resolution = true;
-                                choice = "two";
-                            }
-                        }
-                        index += 1;
-                    }
-                    if(choice == "one"){
-                        result = true;
-                    }
+                    //one is less than two
+                    isTrue = false;
                 }
             }else{
-                //result = one.length() > two.length();
-                if(one[0] != two[0])
-                    result = one[0] > two[0];
-                else{
-                    bool resolution = false;
-                    int index = 0;
-                    std::string choice;
-                    while(resolution != true){
-                        if(one[index] != two[index]){
-                            if(one[index] > two[index]){ //this part decides ascending descending
-                                resolution = true;
-                                choice = "one";
-                            } else{
-                                resolution = true;
-                                choice = "two";
-                            }
-                        }
-                        index += 1;
-                    }
-                    if(choice == "one"){
-                        result = true;
-                    }
-                }
+                //one is equal too two
+                //isTrue = true;
+                isTrue = false;
             }
         }
 
         if(operation == '<'){
-            //are they the same length?
-            if(one.length() == two.length()){
-                //are they the same title?
-                if(one.compare(two) == 0){
-                    result = true; // is "Star Wars" < "Star Wars"; true! here...
+            res = two.compare(one);
+
+            if(res != 0){
+                if(res > 0){
+                    //two is greater than one
+                    isTrue = true;
                 }else{
-                    bool resolution = false;
-                    int index = 0;
-                    std::string choice;
-                    while(resolution != true){
-                        if(one[index] != two[index]){
-                            if(one[index] < two[index]){ //this part decides ascending descending
-                                resolution = true;
-                                choice = "one";
-                            } else{
-                                resolution = true;
-                                choice = "two";
-                            }
-                        }
-                        index += 1;
-                    }
-                    if(choice == "one"){
-                        result = true;
-                    }
+                    //two is less than one
+                    isTrue = false;
                 }
             }else{
-                //result = one.length() < two.length();
-                if(one[0] != two[0])
-                    result = one[0] < two[0];
-                else {
-                    bool resolution = false;
-                    int index = 0;
-                    std::string choice;
-                    while (resolution != true) {
-                        if (one[index] != two[index]) {
-                            if (one[index] > two[index]) { //this part decides ascending descending
-                                resolution = true;
-                                choice = "one";
-                            } else {
-                                resolution = true;
-                                choice = "two";
-                            }
-                        }
-                        index += 1;
-                    }
-                    if (choice == "one") {
-                        result = true;
-                    }
-                }
+                //two is equal too one
+                //isTrue = true;
+                isTrue = false;
             }
         }
-        return result;
+
+        return isTrue;
     }
 
     void sort_s(std::string data[], int low, int high) {

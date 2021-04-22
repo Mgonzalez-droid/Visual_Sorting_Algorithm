@@ -4,9 +4,6 @@
 #include<vector>
 #include<map>
 
-//const std::string FILE_ONE = "file_one";
-//only need to load u.data and u.item, we dont need to specify, that is all the data we need
-
 class Data_Management{
 private:
 
@@ -15,7 +12,8 @@ private:
 
     void Deserialize(){
         //read review data
-        std::ifstream fileOne("/Users/michel/CLionProjects/Visual_Sorting_Algorithm/Data/u.data");
+        //std::ifstream fileOne("/Users/michel/CLionProjects/Visual_Sorting_Algorithm/Data/u.data");
+        std::ifstream fileOne("Data/u.data");
         std::string line;
         //bool isOpen = fileOne.is_open();
         while(!fileOne.eof() && line != " "){
@@ -48,7 +46,8 @@ private:
             }
         }
 
-        std::ifstream fileTwo("/Users/michel/CLionProjects/Visual_Sorting_Algorithm/Data/u.item");
+        //std::ifstream fileTwo("/Users/michel/CLionProjects/Visual_Sorting_Algorithm/Data/u.item");
+        std::ifstream fileTwo("Data/u.item");
         line = "";
         int itemId;
         while(!fileTwo.eof() && line != " "){
@@ -74,15 +73,6 @@ public:
 		Deserialize();
 	}
 
-	/*
-	Review get_a_review(int index){
-
-	}
-
-	std::vector<Review> get_reviews(){
-
-	}
-    */
 	//user_id (integer), item_id(integer), rating(integer), time_stamp(integer), movie_title(string).
 	std::vector<int> getUserIdVec(){
         auto it = data.find("userId");
