@@ -25,7 +25,7 @@ struct Bucket_Sort_Descending{
         }else{
             num = num * 10;
             trailingZeros = trailingZeros - 1;
-            addTrailingZeros(num, trailingZeros);
+            return addTrailingZeros(num, trailingZeros);
         }
     }
 
